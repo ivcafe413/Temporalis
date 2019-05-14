@@ -13,3 +13,4 @@ class GameRenderer:
     def draw(self):
         for o in self.game.gameObjects:
             o.draw(self.screen)
+        self.game.player.draw(self.screen)
