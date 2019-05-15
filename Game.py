@@ -5,12 +5,14 @@ import pygame
 
 from dotmap import DotMap
 from StateMachine.GameStateMachine import GameStateMachine
+from pyqtree import Index
 
 class Game:
     def __init__(self):
         self.gameObjects = []
         self.player = None
         self.stateMachine = GameStateMachine()
+        self.quadTree = Index((0, 0, 800, 600))
 
         # Initial Game State - Load array of game objects
         with open("Levels/Level1.json") as jsonFile:
@@ -19,14 +21,14 @@ class Game:
                 # print('Class: ' + o['gameObjectClass'])
                 do = DotMap(o)
                 # print('Class: ' + do.gameObjectClass)
-                module = importlib.import_module(do.gameObjectClass)
+                module = importlib.import_module(do.gameObjectModule)
                 class_ = getattr(module, do.gameObjectClass)
 
                 no = class_(module.jsonMap(do))  # New Object from DotMapped Object
                 if class_.__name__ == "Player":
                     self.player = no
-                else:
-                    self.gameObjects.append(no)
+                # else:
+                self.gameObjects.append(no)
 
     # Player Actions Available (type == Key Up or Down)
     def action_left(self, type):
@@ -45,4 +47,4 @@ class Game:
     def update(self):
         for o in self.gameObjects:
             o.update()
-        self.player.update()
+        # self.player.update()

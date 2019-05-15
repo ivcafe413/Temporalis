@@ -1,6 +1,7 @@
 {
     "gameObjects": [
         {
+            "gameObjectModule": "Objects.Player",
             "gameObjectClass": "Player",
             "x": 400,
             "y": 300,
@@ -10,6 +11,17 @@
             "g": 128,
             "b": 128,
             "s": 3
+        },
+        {
+            "gameObjectModule": "Objects.Solid",
+            "gameObjectClass": "Solid",
+            "x": 600,
+            "y": 300,
+            "w": 20,
+            "h": 100,
+            "r": 30,
+            "g": 90,
+            "b": 180
         }
     ]
 }
