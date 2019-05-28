@@ -3,6 +3,8 @@ from pygame.rect import Rect
 class GameObject:
     def __init__(self, options):
         self.bounds = Rect(options.x, options.y, options.w, options.h)
+        self.moving = False
+        self.collidable = False
 
     @property
     def left(self):

@@ -68,8 +68,8 @@ class GameRunner:
             while self.currentTime >= LOOP_MS_PF:
                 self.game.update() # Passing in update MS diff?
                 self.currentTime -= LOOP_MS_PF
-                if(self.currentTime >= LOOP_MS_PF):
-                    logging.warning("Lag Frame: {0:n} over {1:n}".format(self.currentTime - LOOP_MS_PF, LOOP_MS_PF))
+                # if(self.currentTime >= LOOP_MS_PF):
+                #     logging.warning("Lag Frame: {0:n} over {1:n}".format(self.currentTime - LOOP_MS_PF, LOOP_MS_PF))
 
             self.gameRenderer.render() # Passing in leftover ticks for delta rendering?
 

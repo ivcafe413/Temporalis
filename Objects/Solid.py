@@ -7,6 +7,8 @@ class Solid(GameObject):
         GameObject.__init__(self, options)
         self.color = options.color
 
+        self.collidable = True
+
     def draw(self, surface):
         pygame.draw.rect(surface, self.color, self.bounds)
 

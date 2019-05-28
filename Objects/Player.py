@@ -9,10 +9,13 @@ class Player(GameObject):
         self.speed = options.speed
 
         # Movement Flags
+        # self.moving = False
         self.moving_left = False
         self.moving_right = False
         self.moving_up = False
         self.moving_down = False
+
+        self.collidable = True
 
     def toggle_movement(self, direction):
         if direction == 'left':
@@ -26,21 +29,21 @@ class Player(GameObject):
 
     def update(self):
         # Movement Update
-        moving = False
+        self.moving = False
         if self.moving_left:
             dx = -(min(self.speed, self.left))
-            moving = True
+            self.moving = True
         elif self.moving_right:
-            dx = min(self.speed, 800 - self.right) #
-            moving = True
+            dx = min(self.speed, 800 - self.right)
+            self.moving = True
         if self.moving_up:
             dy = -(min(self.speed, self.top))
-            moving = True
+            self.moving = True
         elif self.moving_down:
             dy = min(self.speed, 600 - self.bottom)
-            moving = True
+            self.moving = True
             
-        if not moving:
+        if not self.moving:
             return
             
         if not 'dx' in vars():
